@@ -42,8 +42,14 @@ prog ::= fonction:f{: progNoeud.ajouterUnFils(f); :}
        | declGlobal prog
         ;
 declGlobal ::=
-    DECL SEP TYPE:t SEP NOM:n SEP FDL {::}
-  | DECL SEP TYPE:t SEP NOM:n SEP AFF SEP NUM SEP FDL {::}
+    DECL SEP TYPE:t SEP NOM:n SEP FDL {: if(tds.varGlobExist((String) n)){
+                                            throw new Exception("Erreur : ce varriable " + n + " existe déjà");
+                                         }else{
+                                            Symboles nsymbole = new VarSymbol((String) n, (String) t, VarSymbol.Categories.EGlobal );
+                                            tds.addSymbole(nsymbole);
+                                         }
+:}
+  | DECL        TYPE:t        NOM:n SEP AFF SEP NUM SEP FDL {::}
   | DECL SEP TYPE:t SEP NOM:n SEP AFF SEP expression SEP FDL {::}
 ;
 

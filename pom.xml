@@ -41,7 +41,7 @@
             </executions>
             <configuration>
                 <!-- Path to your .flex file -->
-                <lexDefinition>src/main/jflex/fr/ul/miage/compil/Scanner.flex</lexDefinition>
+                <lexDefinition>src\main\cuplex\Scanner.lex</lexDefinition>
                 <!-- Output directory (optional) -->
                 <outputDirectory>${project.build.directory}/generated-sources/jflex</outputDirectory>
             </configuration>

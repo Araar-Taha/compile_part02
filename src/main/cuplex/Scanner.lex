@@ -10,13 +10,13 @@ import javacup.runtime.Symbol;
 %cup
 %{
  void erreur(){
- System.out.println("Caractère inattendu :" + yytext());
+ System.out.println("Caractère inattendu :" + yytext() + "dans la ligne :" + yyline());
  }
 %}
 /* macros */
 SEP = [ \t\r\n]
 NUM = [0-9]+
-FUNCT = "fonction"
+FUNCT = "f"
 TYPE = "void"|"int"
 NOM = [A-Za-z][A-Za-z0-9_]*
 ECR = ECRIRE|ecrire|WRITE|write
@@ -24,6 +24,7 @@ LIRE = LIRE|lire|read|READ
 TQ = TANTQUE|tantque
 DECL = var|VAR
 COM = //*.*//
+FDL = ;
 %%
 // Operators and Punctuation
 "+"     { return new Symbol(Sym.ADD, yyline+1, yycolumn+1); }
@@ -42,7 +43,7 @@ COM = //*.*//
 "}"     { return new Symbol(Sym.FIN, yyline+1, yycolumn+1); }
 "="     { return new Symbol(Sym.AFF, yyline+1, yycolumn+1); }
 ","     { return new Symbol(Sym.VIRG, yyline+1, yycolumn+1); }
-";"     { return new Symbol(Sym.FDL, yyline+1, yycolumn+1); }
+{FDL}     { return new Symbol(Sym.FDL, yyline+1, yycolumn+1); }
 
 // Keywords
 "lire"  { return new Symbol(Sym.LIRE, yyline+1, yycolumn+1); }

@@ -46,7 +46,7 @@ public class Main {
                     path = "samples\\e2";
                     break;
                 case 3 :
-                    path = "samples\\e3.txt";
+                    path = "samples\\e3";
                     break;
                 case 4:
                     path = "samples\\e4.txt";
