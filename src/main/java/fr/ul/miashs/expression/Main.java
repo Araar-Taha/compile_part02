@@ -2,8 +2,9 @@ package fr.ul.miashs.expression;
 
 import fr.ul.miage.*;
 import generated.fr.ul.miashs.expression.*;
-import generated.fr.ul.miashs.expression.Yylex;
-import generated.fr.ul.miashs.expression.ParserCup;
+import generated.fr.ul.miashs.expression.MyScanner;
+//import generated.fr.ul.miashs.expression.ParserCup;
+
 import fr.ul.miage.Generator;
 import fr.ul.miashs.compil.arbre.TxtAfficheur;
 
@@ -36,7 +37,7 @@ public class Main {
                     "7 : example7 \n" +
                     "8 : example8 \n" +
                     "9 : example9 \n" +
-                    " - Quel example vous voulez compiler ? : " );
+                    " - Quel example voulez vous compiler ? : " );
             int choice = scannerChoice.nextInt();
             switch (choice){
                 case 1 :
@@ -69,7 +70,7 @@ public class Main {
 
             }
             Reader file = new FileReader(path);
-            Yylex scanner = new Yylex(file);
+            MyScanner scanner = new MyScanner(file);
             ParserCup parser = new ParserCup(scanner);
             try {
 

@@ -41,9 +41,9 @@
             </executions>
             <configuration>
                 <!-- Path to your .flex file -->
-                <lexDefinition>src\main\cuplex\Scanner.lex</lexDefinition>
+                <lexDefinitions>src\main\cuplex\Scanner.lex</lexDefinitions>
                 <!-- Output directory (optional) -->
-                <outputDirectory>${project.build.directory}/generated-sources/jflex</outputDirectory>
+                <outputDirectory>C:\Users\acer\Desktop\L3-IDMC\L3_S6_IDMC\Compilation\expression\src\main\java\generated\fr\ul\miashs\expression</outputDirectory>
             </configuration>
         </plugin>
     <plugin>
@@ -55,11 +55,15 @@
                 <phase>generate-sources</phase>
                 <goals><goal>generate</goal></goals>
                 <configuration>
+
                     <cupDefinition>
                         src/main/cuplex/Parser.cup
                     </cupDefinition>
+
                     <className>ParserCup</className>
+
                     <symbolsName>Sym</symbolsName>
+
                     <outputDirectory>src/main/java</outputDirectory>
                 </configuration>
             </execution>

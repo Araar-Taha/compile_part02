@@ -5,6 +5,7 @@
 
 package generated.fr.ul.miashs.expression;
 
+
 import fr.ul.miashs.compil.arbre.*;
 import fr.ul.miashs.compil.arbre.exemples.*;
 import fr.ul.miage.*;
@@ -14,8 +15,8 @@ import java_cup.runtime.XMLElement;
   */
 @SuppressWarnings({"rawtypes"})
 public class ParserCup extends java_cup.runtime.lr_parser {
-    public Prog progNoeud = new Prog();
-    public TDS tds = new TDS();
+  public Prog progNoeud = new Prog();
+  public TDS tds = new TDS();
 
  public final Class getSymbolContainer() {
     return Sym.class;
@@ -44,7 +45,7 @@ public class ParserCup extends java_cup.runtime.lr_parser {
     "\000\002\022\003\000\002\023\003\000\002\023\003\000" +
     "\002\023\005\000\002\023\003\000\002\023\003\000\002" +
     "\024\006\000\002\024\005\000\002\021\011\000\002\025" +
-    "\003\000\002\025\007\000\002\026\021\000\002\012\004" +
+    "\003\000\002\025\007\000\002\026\012\000\002\012\004" +
     "\000\002\012\006\000\002\012\002\000\002\007\007\000" +
     "\002\011\007\000\002\006\005\000\002\006\004" });
 
@@ -54,7 +55,7 @@ public class ParserCup extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\127\000\006\014\006\016\004\001\002\000\004\005" +
+    "\000\120\000\006\014\006\016\004\001\002\000\004\015" +
     "\100\001\002\000\010\002\000\014\006\016\004\001\002" +
     "\000\006\005\013\015\014\001\002\000\004\002\012\001" +
     "\002\000\010\002\uffff\014\006\016\004\001\002\000\004" +
@@ -100,19 +101,16 @@ public class ParserCup extends java_cup.runtime.lr_parser {
     "\034\001\002\000\016\005\uffef\006\uffef\007\uffef\011\uffef" +
     "\031\uffef\032\uffef\001\002\000\016\005\ufff0\006\ufff0\007" +
     "\ufff0\011\ufff0\031\ufff0\032\ufff0\001\002\000\004\002\ufffe" +
-    "\001\002\000\004\015\101\001\002\000\004\005\102\001" +
-    "\002\000\004\010\103\001\002\000\004\005\104\001\002" +
-    "\000\006\005\uffe0\015\106\001\002\000\004\005\112\001" +
-    "\002\000\004\017\107\001\002\000\006\005\uffe2\022\110" +
-    "\001\002\000\006\005\uffe0\015\106\001\002\000\004\005" +
-    "\uffe1\001\002\000\004\011\113\001\002\000\004\005\114" +
-    "\001\002\000\004\033\115\001\002\000\004\005\116\001" +
-    "\002\000\004\033\117\001\002\000\004\005\123\001\002" +
-    "\000\004\005\121\001\002\000\004\034\122\001\002\000" +
-    "\010\002\uffe3\014\uffe3\016\uffe3\001\002\000\002\001\002" +
-    "\000\004\020\130\001\002\000\004\005\126\001\002\000" +
-    "\004\034\127\001\002\000\004\005\uffde\001\002\000\004" +
-    "\005\uffdc\001\002\000\004\005\uffdd\001\002" });
+    "\001\002\000\004\010\101\001\002\000\006\011\uffe0\015" +
+    "\103\001\002\000\004\011\107\001\002\000\004\017\104" +
+    "\001\002\000\006\011\uffe2\022\105\001\002\000\006\011" +
+    "\uffe0\015\103\001\002\000\004\011\uffe1\001\002\000\004" +
+    "\033\110\001\002\000\004\033\111\001\002\000\004\005" +
+    "\114\001\002\000\004\034\113\001\002\000\010\002\uffe3" +
+    "\014\uffe3\016\uffe3\001\002\000\002\001\002\000\004\020" +
+    "\121\001\002\000\004\005\117\001\002\000\004\034\120" +
+    "\001\002\000\004\034\uffde\001\002\000\004\005\uffdc\001" +
+    "\002\000\004\005\uffdd\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -120,7 +118,7 @@ public class ParserCup extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\127\000\010\016\007\017\006\026\004\001\001\000" +
+    "\000\120\000\010\016\007\017\006\026\004\001\001\000" +
     "\002\001\001\000\010\016\007\017\076\026\004\001\001" +
     "\000\002\001\001\000\002\001\001\000\010\016\007\017" +
     "\010\026\004\001\001\000\002\001\001\000\002\001\001" +
@@ -146,16 +144,14 @@ public class ParserCup extends java_cup.runtime.lr_parser {
     "\042\001\001\000\002\001\001\000\012\021\035\022\075" +
     "\023\037\024\042\001\001\000\012\021\035\022\074\023" +
     "\037\024\042\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\004\012\104\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\012\110\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\011\117\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\006\005\123\006" +
-    "\124\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\006\005\123\006\130\001" +
-    "\001\000\002\001\001" });
+    "\000\002\001\001\000\002\001\001\000\004\012\101\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\012\105\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\011\111\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\005\114\006\115\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\006\005\114\006\121\001\001\000" +
+    "\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -238,8 +234,8 @@ class CUP$ParserCup$actions {
 		int fleft = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()).right;
 		Object f = (Object)((java_cup.runtime.Symbol) CUP$ParserCup$stack.peek()).value;
-
 		 progNoeud.ajouterUnFils((Noeud) f);
+                     System.out.println("entered in Prog");
               CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("prog",13, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
             }
           return CUP$ParserCup$result;
@@ -287,7 +283,7 @@ class CUP$ParserCup$actions {
 //		 if(tds.varGlobExist((String) n)){
 //                                            throw new Exception("Erreur : ce varriable " + n + " existe déjà");
 //                                         }else{
-//                                            Symbole nsymbole = new VarSymbole((String) n, (String) t, VarSymbole.Categories.Global, );
+//                                            Symboles nsymbole = new VarSymbol((String) n, (String) t, VarSymbol.Categories.EGlobal );
 //                                            tds.addSymbole(nsymbole);
 //                                         }
 
@@ -560,11 +556,11 @@ class CUP$ParserCup$actions {
           return CUP$ParserCup$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // fonction ::= FUNCT SEP TYPE SEP PO SEP functParam SEP PF SEP DEBUT SEP bloc SEP FIN 
+          case 30: // fonction ::= FUNCT TYPE PO functParam PF DEBUT bloc FIN 
             {
               Object RESULT =null;
 		
-              CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("fonction",20, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-14)), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
+              CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("fonction",20, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-7)), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
             }
           return CUP$ParserCup$result;
 

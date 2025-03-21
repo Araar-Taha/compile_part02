@@ -36,7 +36,8 @@ start with prog;
 /* Règles modifiées avec gestion des séparateurs */
 
 // Déclarations globales (exemple : "var int x;")
-prog ::= fonction:f{: progNoeud.ajouterUnFils(f); :}
+prog ::= fonction:f{: progNoeud.ajouterUnFils(f);
+                     System.out.println("entered in Prog");:}
        | declGlobal
        | fonction:f prog{: progNoeud.ajouterUnFils(f); :}
        | declGlobal prog
@@ -109,7 +110,7 @@ liste_arguments ::=
 
 // Définition de fonction (exemple : "function int sum(int a, int b) { ... }")
 fonction ::=
-    FUNCT SEP TYPE SEP PO SEP functParam SEP PF SEP DEBUT SEP bloc SEP FIN {::}
+    FUNCT  TYPE  PO  functParam  PF  DEBUT  bloc FIN {::}
 ;
 
 // Paramètres de fonction (exemple : "int x, float y")
