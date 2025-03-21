@@ -14,6 +14,8 @@ import java_cup.runtime.XMLElement;
   */
 @SuppressWarnings({"rawtypes"})
 public class ParserCup extends java_cup.runtime.lr_parser {
+    public Prog progNoeud = new Prog();
+    public TDS tds = new TDS();
 
  public final Class getSymbolContainer() {
     return Sym.class;
@@ -236,7 +238,8 @@ class CUP$ParserCup$actions {
 		int fleft = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()).right;
 		Object f = (Object)((java_cup.runtime.Symbol) CUP$ParserCup$stack.peek()).value;
-		 progNoeud.ajouterUnFils(f); 
+
+		 progNoeud.ajouterUnFils((Noeud) f);
               CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("prog",13, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
             }
           return CUP$ParserCup$result;
@@ -257,7 +260,7 @@ class CUP$ParserCup$actions {
 		int fleft = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-1)).left;
 		int fright = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-1)).right;
 		Object f = (Object)((java_cup.runtime.Symbol) CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-1)).value;
-		 progNoeud.ajouterUnFils(f); 
+		 progNoeud.ajouterUnFils((Noeud) f);
               CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("prog",13, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-1)), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
             }
           return CUP$ParserCup$result;
@@ -281,12 +284,12 @@ class CUP$ParserCup$actions {
 		int nleft = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-2)).left;
 		int nright = ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-2)).right;
 		Object n = (Object)((java_cup.runtime.Symbol) CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-2)).value;
-		 if(tds.varGlobExist((String) n)){
-                                            throw new Exception("Erreur : ce varriable " + n + " existe déjà");
-                                         }else{
-                                            Symboles nsymbole = new VarSymbol((String) n, (String) t, VarSymbol.Categories.EGlobal );
-                                            tds.addSymbole(nsymbole);
-                                         }
+//		 if(tds.varGlobExist((String) n)){
+//                                            throw new Exception("Erreur : ce varriable " + n + " existe déjà");
+//                                         }else{
+//                                            Symbole nsymbole = new VarSymbole((String) n, (String) t, VarSymbole.Categories.Global, );
+//                                            tds.addSymbole(nsymbole);
+//                                         }
 
               CUP$ParserCup$result = parser.getSymbolFactory().newSymbol("declGlobal",12, ((java_cup.runtime.Symbol)CUP$ParserCup$stack.elementAt(CUP$ParserCup$top-6)), ((java_cup.runtime.Symbol)CUP$ParserCup$stack.peek()), RESULT);
             }
