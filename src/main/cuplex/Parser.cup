@@ -69,15 +69,15 @@ expresBool ::=
 
 // Expressions arithmétiques (exemple : "a + b * 3")
 expression ::=
-    expression SEP ADD SEP expression {::}
-  | expression SEP SUB SEP expression {::}
+    expression ADD expression {::}
+  | expression SUB expression {::}
   | terme {::}
 ;
 
 // Termes multiplicatifs (exemple : "c * d / 2")
 terme ::=
-    terme SEP MUL SEP terme {::}
-  | terme SEP DIV SEP terme {::}
+    terme  MUL  terme {::}
+  | terme  DIV  terme {::}
   | facteur {::}
 ;
 
@@ -85,15 +85,15 @@ terme ::=
 facteur ::=
     NUM {::}
   | NOM {::}
-  | PO SEP expression SEP PF {::}
+  | PO expression PF {::}
   | appel {::}
   | lecture {::}
 ;
 
 // Appels de fonction (exemple : "calculer(5, y)")
 appel ::=
-    NOM SEP PO SEP liste_arguments SEP PF {::}
-  | NOM SEP PO SEP PF {::}
+    NOM  PO  liste_arguments  PF {::}
+  | NOM  PO  PF {::}
 ;
 
 // Lecture d'entrée (exemple : "lire(nom_var)")
@@ -114,8 +114,8 @@ fonction ::=
 
 // Paramètres de fonction (exemple : "int x, float y")
 functParam ::=
-    TYPE SEP NOM {::}
-  | TYPE SEP NOM SEP VIRG SEP functParam {::}
+    TYPE  NOM {::}
+  | TYPE  NOM  VIRG  functParam {::}
   | {::} // Aucun paramètre
 ;
 
@@ -131,6 +131,6 @@ bloc ::=
 
 // Liste d'instructions (exemple : "a=1; b=2;")
 liste_instructions ::=
-    instruction SEP FDL SEP liste_instructions {::}
-  | instruction SEP FDL {::}
+    instruction  FDL  liste_instructions {::}
+  | instruction  FDL {::}
 ;
