@@ -1,0 +1,13 @@
+
+var int a = 100;
+var int c = 170;
+
+fonction int f(int a , int b){
+var int res = 0;
+res = (i * 2) + ((j - 5) / 3);
+return res
+}
+
+fonction void main(){
+write(f(a , c))
+}

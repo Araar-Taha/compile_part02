@@ -1,0 +1,10 @@
+fonction int f(int a){
+si (a <= 0 ){
+return 0}
+sinon{
+return a + f(a - 1)}
+}
+
+fonction void main(){
+write(f(6))
+}

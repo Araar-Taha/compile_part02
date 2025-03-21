@@ -1,0 +1,5 @@
+var int a = 100;
+var int b = 170;
+fonction void main(){
+write((a * 2) + ((b - 5) / 3);
+}

@@ -1,0 +1,8 @@
+var int i = 10;
+var int j = 20;
+var int k = 0;
+vsr int l = 0;
+
+fonction void main(){
+
+}

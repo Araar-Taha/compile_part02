@@ -1,0 +1,7 @@
+var int res = 0;
+fonction void main(){
+var int i = read();
+var int j = read();
+x = (i * 2) + ((j - 5) / 3);
+write(x);
+}

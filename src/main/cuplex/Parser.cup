@@ -1,0 +1,130 @@
+package generated.fr.ul.miashs.expression;
+
+
+import fr.ul.miashs.compil.arbre.*;
+import fr.ul.miashs.compil.arbre.exemples.*;
+
+
+import fr.ul.miage.*;
+/*----------------------------------------------*/
+/* la grammaire */
+/* 1) terminaux */
+terminal EG,SEP,ADD, MUL, PO, PF,ECR,TQ,DECL,TYPE,FUNCT,NOM,FDL,AFF,VIRG,DIFF,EGAL,INF,INFE,SUP,SUPE,DIV,SUB,DEBUT,FIN,LIRE,SI,SINON,RET;
+terminal NUM ;
+//-----------------------------------------------a ajouter dans le scanner
+terminal APP;
+
+
+//---------------------------------------------------------------------------
+/* 2) non terminaux */
+non terminal langage;
+non terminal expression, atome;
+//-----------------------------------------------a ajouter dans le scanner
+
+non terminal instruction,liste_instructions,affectation,idf,bloc,functParam,expresBool,declLocal,defFunction,declGlobal,prog,app,lecture,terme, facteur, appel , liste_arguments,fonction;
+
+//---------------------------------------------------------------------------
+
+/* 3) Gestion de la priorité et associativité */
+precedence left ADD, SUB;     // Plus faible priorité, associativité gauche
+precedence left MUL, DIV;     // Priorité plus élevée, associativité gauche      // Gestion de l'uniaire négatif
+precedence left PO, PF;       // Parenthèses
+
+/* 4) Axiome/Start */
+start with prog;
+/*----------------------------------------------*/
+/* Règles modifiées avec gestion des séparateurs */
+
+// Déclarations globales (exemple : "var int x;")
+prog ::= fonction:f{: progNoeud.ajouterUnFils(f); :}
+       | declGlobal
+       | fonction:f prog{: progNoeud.ajouterUnFils(f); :}
+       | declGlobal prog
+        ;
+declGlobal ::=
+    DECL SEP TYPE:t SEP NOM:n SEP FDL {::}
+  | DECL SEP TYPE:t SEP NOM:n SEP AFF SEP NUM SEP FDL {::}
+  | DECL SEP TYPE:t SEP NOM:n SEP AFF SEP expression SEP FDL {::}
+;
+
+// Déclarations locales (exemple : "var int y;")
+declLocal ::=
+    DECL SEP TYPE:t SEP NOM:n SEP FDL {::}
+;
+
+// Expressions booléennes (exemple : "5 < 10")
+expresBool ::=
+    expression:e1 SEP SUP SEP expression:e2 {::}
+  | expression:e1 SEP INF SEP expression:e2 {::}
+  | expression:e1 SEP EG SEP expression:e2 {::}
+  | expression:e1 SEP SUPE SEP expression:e2 {::}
+  | expression:e1 SEP INFE SEP expression:e2 {::}
+;
+
+// Expressions arithmétiques (exemple : "a + b * 3")
+expression ::=
+    expression SEP ADD SEP expression {::}
+  | expression SEP SUB SEP expression {::}
+  | terme {::}
+;
+
+// Termes multiplicatifs (exemple : "c * d / 2")
+terme ::=
+    terme SEP MUL SEP terme {::}
+  | terme SEP DIV SEP terme {::}
+  | facteur {::}
+;
+
+// Facteurs de base (exemple : "(5 + x)")
+facteur ::=
+    NUM {::}
+  | NOM {::}
+  | PO SEP expression SEP PF {::}
+  | appel {::}
+  | lecture {::}
+;
+
+// Appels de fonction (exemple : "calculer(5, y)")
+appel ::=
+    NOM SEP PO SEP liste_arguments SEP PF {::}
+  | NOM SEP PO SEP PF {::}
+;
+
+// Lecture d'entrée (exemple : "lire(nom_var)")
+lecture ::=
+    LIRE SEP PO SEP NOM SEP PF {::}
+;
+
+// Liste d'arguments (exemple : "1, valeur, 3")
+liste_arguments ::=
+    expression {::}
+  | liste_arguments SEP VIRG SEP expression {::}
+;
+
+// Définition de fonction (exemple : "function int sum(int a, int b) { ... }")
+fonction ::=
+    FUNCT SEP TYPE SEP PO SEP functParam SEP PF SEP DEBUT SEP bloc SEP FIN {::}
+;
+
+// Paramètres de fonction (exemple : "int x, float y")
+functParam ::=
+    TYPE SEP NOM {::}
+  | TYPE SEP NOM SEP VIRG SEP functParam {::}
+  | {::} // Aucun paramètre
+;
+
+// Affectation (exemple : "x = 42;")
+affectation ::=
+    idf:i SEP AFF SEP expression:e {::}
+;
+
+// Bloc d'instructions (exemple : "{ var x; x = 5; }")
+bloc ::=
+    DEBUT SEP liste_instructions SEP FIN {::}
+;
+
+// Liste d'instructions (exemple : "a=1; b=2;")
+liste_instructions ::=
+    instruction SEP FDL SEP liste_instructions {::}
+  | instruction SEP FDL {::}
+;
